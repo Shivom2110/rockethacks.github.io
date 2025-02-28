@@ -1,67 +1,110 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import Link from "next/link";
 import localFont from "next/font/local";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 
 const terminal = localFont({ src: "../../app/fonts/terminal-grotesque.ttf" });
 
-const teamMembers = [
-  { name: "Executives", role: "Title", img: "/team/joon.jpg" },
-  { name: "Event-Logistics", role: "Title", img: "/team/greer.jpg" },
-  { name: "Sponsorship and Finance", role: "Title", img: "/team/cheng.jpg" },
-  { name: "Tech-Dev", role: "Title", img: "/team/judge.jpg" },
-  { name: "High-school Planning", role: "Title", img: "/team/kevin.jpg" },
-  { name: "Marketing", role: "Title", img: "/team/xyz.jpg" },
-  { name: "Experience", role: "Title", img: "/team/abc.jpg" },
+const teamSections = [
+  {
+    section: "High-school Planning",
+    members: [
+      { name: "Member 1", img: "/team/highschool1.jpg", link: "#" },
+      { name: "Member 2", img: "/team/highschool2.jpg", link: "#" },
+      { name: "Member 3", img: "/team/highschool3.jpg", link: "#" },
+      { name: "Member 4", img: "/team/highschool4.jpg", link: "#" },
+      { name: "Member 5", img: "/team/highschool5.jpg", link: "#" },
+    ],
+  },
+  {
+    section: "Event Logistics",
+    members: [
+      { name: "Member 1", img: "/team/event1.jpg", link: "#" },
+      { name: "Member 2", img: "/team/event2.jpg", link: "#" },
+      { name: "Member 3", img: "/team/event3.jpg", link: "#" },
+      { name: "Member 4", img: "/team/event4.jpg", link: "#" },
+      { name: "Member 5", img: "/team/event5.jpg", link: "#" },
+    ],
+  },
+  {
+    section: "Techdev",
+    members: [
+      { name: "Member 1", img: "/team/tech1.jpg", link: "#" },
+      { name: "Aditya Mhambrey", img: "/team photos/IMG_1905.jpg", link: "#" },
+      { name: "Shivom V R", img: "/team/tech3.jpg", link: "#" },
+      { name: "Member 4", img: "/team/tech4.jpg", link: "#" },
+      { name: "Member 5", img: "/team/tech5.jpg", link: "#" },
+    ],
+  },
+  {
+    section: "Sponsorship and Finance",
+    members: [
+      { name: "Nikhil Ankam", img: "/team photos/IMG_5031.jpg", link: "#" },
+      { name: "Member 2", img: "/team/sponsor2.jpg", link: "#" },
+      { name: "Member 3", img: "/team/sponsor3.jpg", link: "#" },
+      { name: "Member 4", img: "/team/sponsor4.jpg", link: "#" },
+      { name: "Member 5", img: "/team/sponsor5.jpg", link: "#" },
+    ],
+  },
+  {
+    section: "Executives",
+    members: [
+      { name: "Member 1", img: "/team/executive1.jpg", link: "#" },
+      { name: "Member 2", img: "/team/executive2.jpg", link: "#" },
+      { name: "Member 3", img: "/team/executive3.jpg", link: "#" },
+      { name: "Member 4", img: "/team/executive4.jpg", link: "#" },
+      { name: "Member 5", img: "/team/executive5.jpg", link: "#" },
+    ],
+  },
+  {
+    section: "Judging",
+    members: [
+      { name: "Member 1", img: "/team/judge1.jpg", link: "#" },
+      { name: "Member 2", img: "/team/judge2.jpg", link: "#" },
+      { name: "Member 3", img: "/team/judge3.jpg", link: "#" },
+      { name: "Member 4", img: "/team/judge4.jpg", link: "#" },
+      { name: "Member 5", img: "/team/judge5.jpg", link: "#" },
+    ],
+  },
+  {
+    section: "Marketing",
+    members: [
+      { name: "Member 1", img: "/team/marketing1.jpg", link: "#" },
+      { name: "Member 2", img: "/team/marketing2.jpg", link: "#" },
+      { name: "Member 3", img: "/team/marketing3.jpg", link: "#" },
+      { name: "Member 4", img: "/team/marketing4.jpg", link: "#" },
+      { name: "Member 5", img: "/team/marketing5.jpg", link: "#" },
+    ],
+  },
 ];
 
 export default function TeamPage() {
   return (
-    <section className="bg-[#081d41] text-white min-h-screen flex flex-col items-center justify-center py-12 px-6">
-      <h1 className={`${terminal.className} text-6xl font-bold text-center mb-6 text-[#FFDA20]`}>
+    <section className="bg-[#081d41] text-white py-12 px-6">
+      <h1 className={`${terminal.className} text-6xl font-bold text-center mb-12 text-[#FFDA20]`}>
         Meet the Team
       </h1>
-      <p className="text-lg text-center mb-10 max-w-2xl">
-        Meet the passionate individuals behind our organization who bring ideas to life and make innovation happen!
-      </p>
-
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={20}  // Reduced spacing between slides
-        slidesPerView={1}
-        breakpoints={{
-          640: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-        }}
-        navigation
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        className="w-full"
-      >
-        {teamMembers.map((member, index) => (
-          <SwiperSlide key={index} className="flex justify-center items-center">
-            <div className="bg-white text-black rounded-lg shadow-lg p-10 flex flex-col items-center w-[500px] h-[400px] mx-2">
-              <Image
-                src={member.img}
-                alt={member.name}
-                width={200}
-                height={200}
-                className="w-48 h-48 rounded-full object-cover mb-6"
-                priority
-              />
-              <h3 className={`${terminal.className} text-2xl font-semibold text-center leading-tight text-yellow-500`}>
-                {member.name}
-              </h3>
-              <p className="text-lg text-gray-600 text-center mt-2">{member.role}</p>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      {teamSections.map((group, idx) => (
+        <div key={idx} className="mb-12">
+          <h2 className={`${terminal.className} text-3xl font-bold text-center mb-6`}>
+            {group.section}
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 justify-items-center">
+            {group.members.map((member, i) => (
+              <Link key={i} href={member.link} className="block">
+                <Image
+                  src={member.img}
+                  alt={member.name}
+                  width={150}
+                  height={150}
+                  className="rounded-full object-cover hover:opacity-80 transition-opacity"
+                />
+              </Link>
+            ))}
+          </div>
+        </div>
+      ))}
     </section>
   );
 }
